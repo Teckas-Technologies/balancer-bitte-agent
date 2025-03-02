@@ -1,0 +1,333 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Balancer Assistant",
+        "description": "API for the interaction between users and the balance APIs through the chat interface.",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://a38d-2409-408d-3d84-2ff2-ec22-4683-33b-8d6f.ngrok-free.app"
+        }
+    ],
+    "x-mb": {
+        "account-id": "sathishm.near",
+        "email": "sathish@teckastechnologies.com",
+        "assistant": {
+            "name": "Balancer Assistant",
+            "description": "An assistant that provides blockchain-related information and interacts with balancer sdk to assist users.",
+            "instructions": "You are an assistant designed to help users perform various blockchain-related tasks by interacting with the Balancer. Your primary functionalities include: 1) Fetching the user's wallet balances, including token details; 2) Swapping token using inputTokenAddress and outputTokenAddreses . Use 'generate-evm-tx' tool to execute swap transaction ",
+            "tools": [
+                {
+                    "type": "generate-transaction"
+                },
+                {
+                    "type": "generate-evm-tx"
+                }
+            ],
+            "image": "https://cdn.1inch.io/logo.png",
+            "categories": [
+                "DeFi",
+                "Ai",
+                "1-Inch",
+                "1inch"
+            ],
+            "chainIds": [
+                42161,137,1
+            ]
+        }
+    },
+    "paths": {
+        "/api/swap": {
+            "get": {
+                "operationId": "swap",
+                "summary": "Create EVM transaction",
+                "description": "Generate an EVM transaction payload for swapping inputToken to outputToken on Balancer, specifying the input amount and recipient address, to be used directly in the generate-evm-tx tool.",
+                "parameters": [
+                    {
+                        "name": "evmAddress",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "The EVM address of the user"
+                    },
+                    {
+                        "name": "amount",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "The amount of USDT to transfer"
+                    },
+                    {
+                        "name": "inputTokenAddress",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "The token address user would like to swap"
+                    },
+                    {
+                        "name": "outputTokenAddreses",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "The token address user would like to recieve"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "evmSignRequest": {
+                                            "type": "object",
+                                            "properties": {
+                                                "to": {
+                                                    "type": "string",
+                                                    "description": "Receiver address"
+                                                },
+                                                "value": {
+                                                    "type": "string",
+                                                    "description": "Transaction value"
+                                                },
+                                                "data": {
+                                                    "type": "string",
+                                                    "description": "Transaction data"
+                                                },
+                                                "from": {
+                                                    "type": "string",
+                                                    "description": "Sender address"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "description": "Error message"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "description": "Error message"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/pools": {
+            "get": {
+                "operationId": "fetchpools",
+                "summary": "Fetch available pools",
+                "description": "Fetch available pools and filter results based on user search criteria, ensuring relevant pools are returned based on the total response data.",
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "evmSignRequest": {
+                                            "type": "object",
+                                            "properties": {
+                                                "to": {
+                                                    "type": "string",
+                                                    "description": "Receiver address"
+                                                },
+                                                "value": {
+                                                    "type": "string",
+                                                    "description": "Transaction value"
+                                                },
+                                                "data": {
+                                                    "type": "string",
+                                                    "description": "Transaction data"
+                                                },
+                                                "from": {
+                                                    "type": "string",
+                                                    "description": "Sender address"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "description": "Error message"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "description": "Error message"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/sportPrice": {
+            "get": {
+                "operationId": "fetchSportPrice",
+                "summary": "Fetch sport price",
+                "description": "Calculate the spot price based on the input and output tokens along with the specified pool ID, ensuring accurate pricing information.",
+                "parameters": [
+                    {
+                        "name": "poolId",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "The pool id of the pool"
+                    },
+                    {
+                        "name": "inputTokenAddress",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "The token address user would like to swap"
+                    },
+                    {
+                        "name": "outputTokenAddreses",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "The token address user would like to recieve"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "evmSignRequest": {
+                                            "type": "object",
+                                            "properties": {
+                                                "to": {
+                                                    "type": "string",
+                                                    "description": "Receiver address"
+                                                },
+                                                "value": {
+                                                    "type": "string",
+                                                    "description": "Transaction value"
+                                                },
+                                                "data": {
+                                                    "type": "string",
+                                                    "description": "Transaction data"
+                                                },
+                                                "from": {
+                                                    "type": "string",
+                                                    "description": "Sender address"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "description": "Error message"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "description": "Error message"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
