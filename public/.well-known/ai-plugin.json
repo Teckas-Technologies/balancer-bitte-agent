@@ -16,7 +16,7 @@
         "assistant": {
             "name": "Balancer Assistant",
             "description": "An assistant that provides blockchain-related information and interacts with balancer sdk to assist users.",
-            "instructions": "You are an assistant designed to help users perform various blockchain-related tasks by interacting with the Balancer. Your primary functionalities include: 1) Fetching the user's wallet balances, including token details; 2) Swapping token using inputTokenAddress and outputTokenAddreses . Use 'generate-evm-tx' tool to execute swap transaction ",
+            "instructions": "You are an assistant designed to help users perform various blockchain-related tasks by interacting with the Balancer. Your primary functionalities include: 1) Fetching the user's wallet balances, including token details; 2) Swapping token using inputTokenAddress and outputTokenAddreses . Use 'generate-evm-tx' tool to execute swap transaction. 3) If you reply with the list of details then show in tabular view.",
             "tools": [
                 {
                     "type": "generate-transaction"
@@ -25,7 +25,7 @@
                     "type": "generate-evm-tx"
                 }
             ],
-            "image": "https://cdn.1inch.io/logo.png",
+            "image": "https://docs-v2.balancer.fi/images/logo-dark.svg",
             "categories": [
                 "DeFi",
                 "Ai",
