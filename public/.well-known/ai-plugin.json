@@ -242,7 +242,7 @@
                         "description": "The pool id of the pool"
                     },
                     {
-                        "name": "inputTokenAddress",
+                        "name": "tokenIn",
                         "in": "query",
                         "required": true,
                         "schema": {
@@ -251,7 +251,7 @@
                         "description": "The token address user would like to swap"
                     },
                     {
-                        "name": "outputTokenAddreses",
+                        "name": "tokenOut",
                         "in": "query",
                         "required": true,
                         "schema": {
