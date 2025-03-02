@@ -226,7 +226,7 @@
                 }
             }
         },
-        "/api/spotPrice": {
+        "/api/spotprice": {
             "get": {
                 "operationId": "fetch-spot-Price",
                 "summary": "Fetch the spot price",
