@@ -62,7 +62,7 @@ router.get("/", async (req, res) => {
       metaTransactions: [{to,data,value: "0x" + parseEther(amount).toString(16)}]
     });
     res.json({
-      message: `Before initiating this transaction, ask the AI to check if the allowance for ${"0x" + parseEther(amount).toString(16)} to ${to} is sufficient. If not, approve it first and then proceed with the swap transaction.`,
+      // message: `Before initiating this transaction, ask the AI to check if the allowance for ${"0x" + parseEther(amount).toString(16)} to ${to} is sufficient. If not, approve it first and then proceed with the swap transaction.`,
       evmSignRequest:signRequestTransaction
     });
   } catch (error) {
