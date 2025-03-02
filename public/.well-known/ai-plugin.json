@@ -228,8 +228,8 @@
         },
         "/api/spotPrice": {
             "get": {
-                "operationId": "fetchSpotPrice",
-                "summary": "Fetch spot price",
+                "operationId": "fetch-spot-Price",
+                "summary": "Fetch the spot price",
                 "description": "Calculate the spot price based on the input and output tokens along with the specified pool ID, ensuring accurate pricing information.",
                 "parameters": [
                     {
