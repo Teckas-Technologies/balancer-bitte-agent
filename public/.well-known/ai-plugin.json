@@ -7,7 +7,7 @@
     },
     "servers": [
         {
-            "url": "https://a38d-2409-408d-3d84-2ff2-ec22-4683-33b-8d6f.ngrok-free.app"
+            "url": "https://balancer-bitte-agent.vercel.app"
         }
     ],
     "x-mb": {
