@@ -7,7 +7,7 @@
     },
     "servers": [
         {
-            "url": "https://balancer-bitte-agent.vercel.app"
+            "url": "https://11ea-2409-408d-3d19-c6d4-bcef-c172-45f7-ec3f.ngrok-free.appp"
         }
     ],
     "x-mb": {
@@ -226,10 +226,10 @@
                 }
             }
         },
-        "/api/sportPrice": {
+        "/api/spotPrice": {
             "get": {
-                "operationId": "fetchSportPrice",
-                "summary": "Fetch sport price",
+                "operationId": "fetchSpotPrice",
+                "summary": "Fetch spot price",
                 "description": "Calculate the spot price based on the input and output tokens along with the specified pool ID, ensuring accurate pricing information.",
                 "parameters": [
                     {

@@ -8,9 +8,6 @@ const balancer = new BalancerSDK({
     network: Network.POLYGON,
     rpcUrl: 'https://rpc.ankr.com/polygon'
   });
-const PRIVATE_KEY = "df387fd2c40e32d5f13337d86c754977aedd66be1c8effa1196092fbfc17a427";
-const provider = new ethers.JsonRpcProvider("https://rpc.ankr.com/polygon");
-const wallet = new ethers.Wallet(PRIVATE_KEY, provider);
 const { swaps } = balancer;
 router.get("/", async (req, res) => {
   try {
